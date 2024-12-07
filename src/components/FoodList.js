@@ -1,72 +1,56 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const FoodList = () => {
+  const [keyword, setKeyword] = useState('');
   const [foodList, setFoodList] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [filteredList, setFilteredList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const fetchFoodList = async () => {
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+
+    // 백엔드 서버로 요청
+    const apiUrl = `http://localhost:5000/api/foodlist?foodName=${encodeURIComponent(keyword)}`;
+
     try {
-      const response = await axios.get(
-        "/service/1390802/AgriFood/MzenFoodCode/getKoreanFoodList",
-        {
-          params: {
-            serviceKey: process.env.REACT_APP_API_KEY,
-            pageNo: 1,
-            numOfRows: 100,
-          },
-        }
-      );
-
+      const response = await axios.get(apiUrl);
       const parser = new DOMParser();
-      const xml = parser.parseFromString(response.data, "application/xml");
-      const items = Array.from(xml.getElementsByTagName("item"));
-
-      const data = items.map((item) => ({
-        foodCode: item.getElementsByTagName("food_Code")[0]?.textContent,
-        foodName: item.getElementsByTagName("food_Name")[0]?.textContent,
+      const xmlDoc = parser.parseFromString(response.data, 'text/xml');
+      const items = Array.from(xmlDoc.getElementsByTagName('item')).map((item) => ({
+        foodName: item.getElementsByTagName('food_Name')[0]?.textContent,
+        foodCode: item.getElementsByTagName('food_Code')[0]?.textContent,
       }));
-
-      setFoodList(data);
-      setFilteredList(data);
+      setFoodList(items);
     } catch (error) {
-      console.error("API 호출 에러:", error);
+      setError('Failed to fetch food list. Please try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleSearch = () => {
-    const filtered = foodList.filter((item) =>
-      item.foodName.includes(searchKeyword)
-    );
-    setFilteredList(filtered);
-  };
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>식품 목록</h2>
-      <input
-        type="text"
-        placeholder="식품명을 입력하세요"
-        value={searchKeyword}
-        onChange={(e) => setSearchKeyword(e.target.value)}
-        style={{
-          padding: "10px",
-          marginRight: "10px",
-          width: "300px",
-          fontSize: "16px",
-        }}
-      />
-      <button onClick={handleSearch} style={{ padding: "10px 20px" }}>
-        검색
-      </button>
-      <button onClick={fetchFoodList} style={{ padding: "10px 20px", marginLeft: "10px" }}>
-        전체 목록 가져오기
-      </button>
-      <ul style={{ marginTop: "20px", listStyle: "none", padding: "0" }}>
-        {filteredList.map((item, index) => (
-          <li key={index} style={{ padding: "10px", borderBottom: "1px solid #ddd" }}>
-            <strong>이름:</strong> {item.foodName} | <strong>코드:</strong> {item.foodCode}
+    <div className="food-list-container">
+      <h1>Search Food by Ingredient</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Enter ingredient (e.g., 고추)"
+        />
+        <button onClick={handleSearch} disabled={loading} className="search-button">
+          Search
+        </button>
+      </div>
+      {loading && <p className="loading">Loading...</p>}
+      {error && <p className="error">{error}</p>}
+      <ul className="food-list">
+        {foodList.map((food, index) => (
+          <li key={index} className="food-item">
+            <span className="food-name">{food.foodName}</span>
+            <span className="food-code">(Code: {food.foodCode})</span>
           </li>
         ))}
       </ul>

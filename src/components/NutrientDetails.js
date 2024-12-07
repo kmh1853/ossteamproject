@@ -4,13 +4,18 @@ import { useParams } from "react-router-dom";
 
 const NutrientDetails = () => {
   const { foodCode } = useParams();
-  const [nutrientDetails, setNutrientDetails] = useState([]);
+  const [nutrientDetails, setNutrientDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchNutrientDetails = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
         const response = await axios.get(
-          `http://apis.data.go.kr/1390802/AgriFood/MzenFoodNutri/getKoreanFoodIdntList`,
+          `/service/AgriFood/MzenFoodNutri/getKoreanFoodIdntList`,
           {
             params: {
               serviceKey: process.env.REACT_APP_API_KEY,
@@ -35,8 +40,11 @@ const NutrientDetails = () => {
         }));
 
         setNutrientDetails(data[0]);
-      } catch (error) {
-        console.error("Error fetching nutrient details:", error);
+      } catch (err) {
+        setError("영양소 데이터를 불러오는 데 실패했습니다.");
+        console.error("Error fetching nutrient details:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -46,6 +54,8 @@ const NutrientDetails = () => {
   return (
     <div style={{ padding: "20px" }}>
       <h1>영양소 상세 정보</h1>
+      {loading && <p>데이터를 불러오는 중입니다...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       {nutrientDetails ? (
         <div>
           <p>음식 이름: {nutrientDetails.foodName}</p>
@@ -54,7 +64,7 @@ const NutrientDetails = () => {
           <p>탄수화물: {nutrientDetails.carbohydrate} g</p>
         </div>
       ) : (
-        <p>데이터를 불러오는 중입니다...</p>
+        !loading && <p>데이터가 없습니다.</p>
       )}
     </div>
   );
