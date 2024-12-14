@@ -1,41 +1,52 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-  
-  .home-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .home-description {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .home-buttons {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .home-button {
-    text-decoration: none;
-    color: white;
-    background-color: #007bff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-  
-  .home-button:hover {
-    background-color: #0056b3;
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  animation: gradient-bg 10s ease infinite;
+}
+
+.dynamic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://source.unsplash.com/1600x900/?sky,weather') no-repeat center center/cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+@keyframes gradient-bg {
+  0% { background: #4facfe; }
+  50% { background: #00f2fe; }
+  100% { background: #4facfe; }
+}
+
+.home-buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.home-button {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}

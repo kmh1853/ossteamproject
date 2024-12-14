@@ -1,78 +1,101 @@
-/* 단기 예보 페이지 스타일 */
 .short-term-forecast-container {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: 40px auto;
-    text-align: center;
-  }
-  
-  .forecast-header {
-    font-size: 40px;
-    color: #ff6f61;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .forecast-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-  }
-  
-  .forecast-table th, .forecast-table td {
-    padding: 15px 25px;
-    text-align: center;
-    border: 1px solid #ddd;
-    background-color: #fff8e1;
-  }
-  
-  .forecast-table th {
-    background-color: #ff6f61;
-    color: white;
-    font-size: 18px;
-  }
-  
-  .forecast-table td {
-    color: #333;
-    font-size: 16px;
-  }
-  
-  .forecast-button-container {
-    text-align: center;
-  }
-  
-  .forecast-button {
-    background-color: #ff6f61;
-    color: white;
-    padding: 18px 35px;
-    font-size: 20px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .forecast-button:hover {
-    background-color: #ff5722;
-  }
-  
-  .main-page-button {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 35px;
-    background-color: #ffcc80;
-    color: #4a4a4a;
-    font-size: 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .main-page-button:hover {
-    background-color: #ffb74d;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.forecast-header {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.forecast-summary {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  background: #ffcc80;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.forecast-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.forecast-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.forecast-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.forecast-card p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.tabs {
+  margin: 20px 0;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.tabs button.active {
+  background-color: #0056b3;
+}
+
+.tabs button:hover {
+  background-color: #0056b3;
+}
+
+.mode-toggle-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle-button:hover {
+  background-color: #0056b3;
+}
+
+:root {
+  --card-bg-color: #ffffff;
+  --card-text-color: #000000;
+}
+
+.dark-mode {
+  --card-bg-color: #333333;
+  --card-text-color: #ffffff;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}

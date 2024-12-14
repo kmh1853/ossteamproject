@@ -1,66 +1,88 @@
-/* 3일 예보 페이지 스타일 */
 .three-day-forecast-container {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 40px auto;
-    text-align: center;
-  }
-  
-  .three-day-header {
-    font-size: 40px;
-    color: #ff6f61;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-  
-  .forecast-chart {
-    width: 100%;
-    height: 350px;
-    margin-top: 30px;
-  }
-  
-  .forecast-info {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-top: 40px;
-  }
-  
-  .forecast-info div {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
-  }
-  
-  .forecast-info div h4 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .forecast-info div p {
-    font-size: 18px;
-    color: #555;
-  }
-  
-  .main-page-button {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 35px;
-    background-color: #ffcc80;
-    color: #4a4a4a;
-    font-size: 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .main-page-button:hover {
-    background-color: #ffb74d;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.three-day-header {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tabs button.active {
+  background: #0056b3;
+}
+
+.forecast-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.forecast-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  color: #333333;
+}
+
+.forecast-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chart-container {
+  margin-top: 30px;
+  height: 400px;
+}
+
+.forecast-card.sunny {
+  background: linear-gradient(135deg, #ffe259, #ffa751);
+  color: #fff;
+}
+
+.forecast-card.rainy {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+}
+
+.forecast-card.cloudy {
+  background: linear-gradient(135deg, #d3d3d3, #a9a9a9);
+  color: #333;
+}
+
+.warning {
+  background: #ffcc00;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.chart-container {
+  margin-top: 30px;
+  height: 400px;
+}
