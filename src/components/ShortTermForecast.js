@@ -122,7 +122,7 @@ const ShortTermForecast = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [ptyMapping, skyMapping]);
   
 
   const prepareChartData = (data) => {
