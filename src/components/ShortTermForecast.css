@@ -1,0 +1,78 @@
+/* 단기 예보 페이지 스타일 */
+.short-term-forecast-container {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+  }
+  
+  .forecast-header {
+    font-size: 40px;
+    color: #ff6f61;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  
+  .forecast-table th, .forecast-table td {
+    padding: 15px 25px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #fff8e1;
+  }
+  
+  .forecast-table th {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .forecast-table td {
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .forecast-button-container {
+    text-align: center;
+  }
+  
+  .forecast-button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 18px 35px;
+    font-size: 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .forecast-button:hover {
+    background-color: #ff5722;
+  }
+  
+  .main-page-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 35px;
+    background-color: #ffcc80;
+    color: #4a4a4a;
+    font-size: 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .main-page-button:hover {
+    background-color: #ffb74d;
+  }
+  

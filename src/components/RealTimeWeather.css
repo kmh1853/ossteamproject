@@ -1,0 +1,121 @@
+/* 실시간 날씨 페이지 기본 스타일 */
+.weather-container {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fffbf3; /* 부드럽고 따뜻한 배경색 */
+    color: #333;
+    padding: 50px 20px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* 타이틀 */
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #ff6f61; /* 화사한 핑크색 */
+    margin-bottom: 30px;
+  }
+  
+  /* 홈 버튼 */
+  .home-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .home-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* 날짜와 시간 입력 */
+  .form-container {
+    margin-bottom: 30px;
+  }
+  
+  input[type="text"] {
+    padding: 12px 20px;
+    font-size: 18px;
+    width: 220px;
+    border-radius: 10px;
+    border: 2px solid #ff6f61;
+    background-color: #fff8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #ff5722;
+    background-color: #ffe0b2;
+    outline: none;
+  }
+  
+  /* 조회 버튼 */
+  .search-button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #ff5722;
+  }
+  
+  /* 정보 표시 */
+  .info, .warning, .loading, .error {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #ff5722;
+  }
+  
+  .forecast-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .forecast-item {
+    font-size: 18px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .forecast-item strong {
+    color: #ff6f61;
+  }
+  
+  /* 기본 버튼 스타일 */
+  button, input[type="text"] {
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
